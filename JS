@@ -1,0 +1,46 @@
+// Interatividade 1: Validação e resposta do formulário de Newsletter
+const form = document.getElementById('newsletterForm');
+const emailInput = document.getElementById('emailInput');
+const feedback = document.getElementById('formFeedback');
+
+if (form) {
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const userEmail = emailInput.value;
+    if (userEmail) {
+      feedback.textContent = 'Obrigado! O e-mail "' + userEmail + '" foi cadastrado com sucesso.';
+      emailInput.value = '';
+    }
+  });
+}
+
+// Interatividade 2: Clique nos botões de plano
+const planButtons = document.querySelectorAll('.btn-plan');
+
+planButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const planName = this.getAttribute('data-plan');
+    alert('Você selecionou o plano ' + planName + '! Redirecionando para o pagamento...');
+  });
+});
+
+// Interatividade 3: Navegação com rolagem suave
+const links = document.querySelectorAll('.nav-links a, .hero-ctas a');
+
+links.forEach(link => {
+  link.addEventListener('click', function(event) {
+    const targetId = this.getAttribute('href');
+    
+    if (targetId && targetId.startsWith('#')) {
+      event.preventDefault();
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
+  });
+});
