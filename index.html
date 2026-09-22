@@ -1,0 +1,251 @@
+Claro — aqui está um `index.html` completo com vários exemplos de **CSS Grid**:
+
+```
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplos de CSS Grid</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f5;
+      color: #18181b;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 0 auto 50px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .box {
+      background: #2563eb;
+      color: white;
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* 1. Grid com colunas iguais */
+    .grid-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    /* 2. Colunas com tamanhos diferentes */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 15px;
+    }
+
+    /* 3. Grid com linhas e colunas definidas */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 100px 100px;
+      gap: 15px;
+    }
+
+    /* 4. Item ocupando várias colunas */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .grid-4 .destaque {
+      grid-column: span 2;
+    }
+
+    /* 5. Item ocupando várias linhas */
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .grid-5 .alto {
+      grid-row: span 2;
+    }
+
+    /* 6. Layout de página */
+    .layout {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: 80px 300px 70px;
+      gap: 10px;
+    }
+
+    .header {
+      grid-area: header;
+      background: #7c3aed;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background: #0891b2;
+    }
+
+    .main {
+      grid-area: main;
+      background: #16a34a;
+    }
+
+    .footer {
+      grid-area: footer;
+      background: #ea580c;
+    }
+
+    .area {
+      color: white;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* 7. Grid responsivo */
+    .grid-responsive {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+
+      .layout {
+        grid-template-areas:
+          "header"
+          "sidebar"
+          "main"
+          "footer";
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 100px 250px 70px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Exemplos de CSS Grid</h1>
+
+  <section>
+    <h2>1. Três colunas iguais</h2>
+
+    <div class="grid-1">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Colunas com tamanhos diferentes</h2>
+
+    <div class="grid-2">
+      <div class="box">1fr</div>
+      <div class="box">2fr</div>
+      <div class="box">1fr</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Linhas e colunas definidas</h2>
+
+    <div class="grid-3">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box">7</div>
+      <div class="box">8</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Item ocupando duas colunas</h2>
+
+    <div class="grid-4">
+      <div class="box destaque">Destaque</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. Item ocupando duas linhas</h2>
+
+    <div class="grid-5">
+      <div class="box alto">Alto</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>6. Layout usando grid-template-areas</h2>
+
+    <div class="layout">
+      <header class="area header">HEADER</header>
+      <aside class="area sidebar">SIDEBAR</aside>
+      <main class="area main">MAIN</main>
+      <footer class="area footer">FOOTER</footer>
+    </div>
+  </section>
+
+  <section>
+    <h2>7. Grid responsivo</h2>
+
+    <div class="grid-responsive">
+      <div class="box">Card 1</div>
+      <div class="box">Card 2</div>
+      <div class="box">Card 3</div>
+      <div class="box">Card 4</div>
+      <div class="box">Card 5</div>
+      <div class="box">Card 6</div>
+    </div>
+  </section>
+
+</body>
+</html>
+```
